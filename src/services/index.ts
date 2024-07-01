@@ -1,6 +1,4 @@
-import {User} from './user'
-import {Note} from './note'
-import {Public} from './public'
-export const userService = new User();
-export const publicService = new Public();
-export const noteService = new Note();
+import { Cards } from './cards'
+import { App } from './app'
+export const CardsService = new Cards();
+export const AppService = new App();

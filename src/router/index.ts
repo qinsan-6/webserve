@@ -1,3 +1,2 @@
-export {UserRouter} from'./user'
-export {DataRouter} from'./data'
-export {PublicRouter} from'./public'
+export {CardsRouter} from'./cards'
+export { AppRouter } from './App'
