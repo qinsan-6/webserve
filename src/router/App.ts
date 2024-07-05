@@ -5,5 +5,7 @@ import AppController from '../controller/appController';
 // import {TokenCheckMiddleware}from'../middleware/TokenCheckMiddleware'
 export const AppRouter = new koaRouter();
 
-AppRouter.get('/app/randomone',AppController.randomOne)//上传图片
-// AppRouter.get('/cards/findAll',CardsController.getAll)//查询全部图片
+AppRouter.get('/app/randomone',AppController.randomOne)//随机获取一张塔罗牌
+AppRouter.post('/app/upload',AppController.upload)//上传小程序资源
+AppRouter.post('/app/createOne',AppController.createOne)//创建小程序资源
+AppRouter.get('/app/findAll',AppController.getAll)//查询全部资源
