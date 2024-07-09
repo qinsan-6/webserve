@@ -15,7 +15,8 @@ class AiController {
   changemodel(){}
   inquire(ctx:Context){
     let msg = new Msg();
-    // 调用AI模型查询
+    // 获取name参数
+    let name = ctx.request.query.name;
 
     msg.code = 200;
     msg.data = "查询结果";

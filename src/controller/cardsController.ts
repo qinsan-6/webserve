@@ -21,7 +21,6 @@ class CardsController {
     let msg = new Msg();
     try {
       if ("files" in ctx.request) {
-        console.log(ctx.request.files)
         let filename = (ctx.request.files as any).file.newFilename;
         const src = `http://192.168.0.237:5001/${filename}`;
         //将图片信息保存至数据库
@@ -74,7 +73,7 @@ class CardsController {
       if(message){
         msg.code = 200
         msg.data = 'ok'
-        msg.msg = '添加解读成功'
+        msg.msg = '添加成功'
       }
     }
     ctx.body = msg
