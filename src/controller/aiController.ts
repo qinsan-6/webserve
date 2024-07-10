@@ -7,19 +7,36 @@ class Msg {
     this.msg = "something err";
     this.data = null;
   }
-  code: 200 | 202 | 404;
+  code: 200 | 202 | 404 | 204;
   msg: string;
   data: any;
 }
 class AiController {
   changemodel(){}
-  inquire(ctx:Context){
+  async inquire(ctx:Context){
     let msg = new Msg();
-    // 获取name参数
-    let name = ctx.request.query.name;
+
+    //获取用户参数
+    let {name,id,cardNames,question} = ctx.request.body;
+
+    // 检查数据是否为空
+    if(!name||!id||!question||!cardNames){
+        msg.code = 204;
+        msg.msg = "参数不能为空";
+        ctx.body = msg;
+        return;
+    }
+    // 调用Serve层方法查询结果
+    let data = await AiService.inquire((name as string),(id as any),(cardNames as any),(question as any));
+    if(!data){
+        msg.code = 404;
+        msg.msg = "error";
+        ctx.body = msg;
+        return;
+    }
 
     msg.code = 200;
-    msg.data = "查询结果";
+    msg.data = data;
     msg.msg = "ok";
     ctx.body = msg;
   }
@@ -29,7 +46,7 @@ class AiController {
     let {name,template} = ctx.request.body;
     //检测数据是否为空
     if(!name||!template){
-        msg.code = 404;
+        msg.code = 204;
         msg.msg = "参数不能为空";
         ctx.body = msg;
         return;
