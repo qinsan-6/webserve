@@ -30,7 +30,8 @@ export class Cards {
       });
       if (card) {
         //删除图片文件
-        let filepath = path.join(__dirname,card.dataValues.src.replace('http://192.168.0.237:5001','../../upload'))
+        let cardPath = card.dataValues.src.replace('http://192.168.0.237:5001','')
+        let filepath = path.join(__dirname,'../../upload'+cardPath)
         if(fs.existsSync(filepath)){
           fs.unlinkSync(filepath)
           card.destroy();
@@ -39,6 +40,7 @@ export class Cards {
         }
       }
     } catch (error) {
+      console.log(error)
       return null;
     }
     //删除图片文件

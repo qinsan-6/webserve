@@ -1,15 +1,7 @@
 import { Context } from "koa";
 import { CardsService } from "../services/index";
-class Msg {
-    constructor(){
-        this.code = 202
-        this.msg =  "something err"
-        this.data = null
-    }
-  code: 200 | 202 | 404;
-  msg: string;
-  data: any;
-}
+import { Msg } from "../class";
+import { baseUrl } from "../config/config";
 interface Unscramble {
   id:string
   data:string
@@ -22,7 +14,7 @@ class CardsController {
     try {
       if ("files" in ctx.request) {
         let filename = (ctx.request.files as any).file.newFilename;
-        const src = `http://192.168.0.237:5001/${filename}`;
+        const src = `/${filename}`;
         //将图片信息保存至数据库
         let data = await CardsService.add(src);
         if(data){
@@ -55,6 +47,11 @@ class CardsController {
   async getAll(ctx: Context) {
     let msg = new Msg()
     let data = await CardsService.find('all')
+
+    //替换图片路径
+    data?.forEach(item=>{
+      item.src =baseUrl + item.src.replace("http://192.168.0.237:5001",'')
+    })
     if(data){
         msg.code = 200
         msg.data = data
