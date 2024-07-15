@@ -1,4 +1,5 @@
 export interface GetOption {
+    module:string;
     start?:number;
     num?:number;
     status?: 0 | 1 | 2; //0 未使用 1正在使用 2全部
@@ -9,14 +10,21 @@ export type Option = {
     status: 0 | 1 | 2; //0 未使用 1正在使用 2全部
 }
 
+export interface ArrayInterface{
+    name?:string,
+    describe?:string,
+    inuse?:number,
+    module:string
+}
+
 export type ArrayOption = {
     id:string;
-    name:string,
     src:string,
     describe:string,
     count:number,
     inuse:number,
-    pos?:number,
+    pos:number,
+    name:string
 }
 
 export type ModifyOption ={

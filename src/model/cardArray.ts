@@ -12,6 +12,7 @@ class CardArray extends Model {
     declare count: number;
     declare inuse: boolean;
     declare pos:number;
+    declare module: string;
 }
 
 CardArray.init({
@@ -42,6 +43,10 @@ CardArray.init({
     },
     pos: {
         type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    module: {
+        type: DataTypes.UUID,
         allowNull: false
     }
 },{

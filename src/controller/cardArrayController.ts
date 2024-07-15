@@ -2,7 +2,7 @@
 import { Context } from "koa";
 import { Msg } from "../class";
 import { CardArrayService } from "../services";
-import { ArrayOption, GetOption, Option } from "../types";
+import { ArrayInterface, ArrayOption, GetOption, Option } from "../types";
 import { randomUUID } from "crypto";
 import path from "path";
 import { FileUntil } from "../until/file";
@@ -11,17 +11,17 @@ class CardArray {
   async getarray(ctx: Context) {
     let msg = new Msg();
     //获取query参数
-    let query: GetOption = ctx.request.query;
+    let query: GetOption = ctx.request.query as any;
 
     //默认配置
     const basicOption: Option = {
       start: 0,
       num: 10,
-      status: 2,
+      status: 1,
     };
 
     //合并配置
-    let option: Option = {
+    let option: Option & GetOption= {
       ...basicOption,
       ...query,
     };
@@ -39,7 +39,7 @@ class CardArray {
   async addarray(ctx: Context) {
     let msg = new Msg();
     //获取传入牌阵信息
-    let body: ArrayOption = ctx.request.body;
+    let body: ArrayInterface = ctx.request.body;
     let BasicArray: ArrayOption = {
       id: randomUUID(),
       name: "暂无",
@@ -119,6 +119,10 @@ class CardArray {
       msg.msg = "success";
     }
     ctx.body = msg;
+  }
+
+  async updateSelect(ctx: Context){
+    
   }
 }
 

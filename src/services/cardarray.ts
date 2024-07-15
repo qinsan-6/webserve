@@ -1,15 +1,19 @@
-import { ArrayOption, ModifyOption, Option } from "../types";
+import { ArrayOption, GetOption, ModifyOption, Option } from "../types";
 import CardArrayModel from "../model/cardArray";
 import { baseUrl } from "../config/config";
 import path from "path";
 import fs from "fs";
 
 export class CardArray {
-  async getarray(option: Option) {
+  async getarray(option: Option & GetOption) {
     let data: any = [];
     //查询数据库
     try {
-      data = await CardArrayModel.findAll();
+      data = await CardArrayModel.findAll({
+        where:{
+          module:option.module,
+        }
+      });
       data.forEach((item: CardArrayModel) => {
         //添加服务器访问地址
         item.src = baseUrl + `/cardArray/${item.src}`;

@@ -8,6 +8,7 @@ class Plays extends Model {
     declare name:string;
     declare template:string;
     declare ai:string;
+    declare status:number;
 }
 
 Plays.init({
@@ -34,6 +35,11 @@ Plays.init({
         autoIncrement: false,
         primaryKey: false,
         allowNull: false,
+    },
+    status:{
+        type:DataTypes.INTEGER,
+        autoIncrement: false,
+        allowNull:false
     }
 },{
     // 这是其他模型参数

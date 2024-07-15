@@ -1,13 +1,15 @@
 import PlayModule from "../model/play";
 import { askai } from "../axios/api";
+import { FreeModelName } from "../config/config"
 export class Ai {
-  async addPlay(name: string, template: Array<string>) {
+  async addPlay(name: string, template: Array<string>,status:number) {
     let templateJson = JSON.stringify(template);
     try {
       await PlayModule.create({
         name: name,
         template: templateJson,
-        ai: "play",
+        ai: FreeModelName[0],
+        status: status,
       });
       return "success";
     } catch (error) {
@@ -18,7 +20,6 @@ export class Ai {
 
   async inquire(
     name: string,
-    id: number,
     cards: Array<string>,
     question: string
   ) {
@@ -27,12 +28,10 @@ export class Ai {
       let play = await PlayModule.findOne({
         where: {
           name: name,
-          id: id,
         },
       });
 
       if (play != null) {
-        console.log(play.template);
         let template = await JSON.parse(play.template);
         //遍历模板
         let aimodel = play.ai;
