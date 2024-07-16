@@ -13,8 +13,9 @@ export type Option = {
 export interface ArrayInterface{
     name?:string,
     describe?:string,
-    inuse?:number,
-    module:string
+    inuse?:boolean,
+    module:string,
+    pos:number
 }
 
 export type ArrayOption = {
@@ -22,8 +23,7 @@ export type ArrayOption = {
     src:string,
     describe:string,
     count:number,
-    inuse:number,
-    pos:number,
+    inuse:boolean,
     name:string
 }
 

@@ -19,8 +19,6 @@ class CardArray {
       num: 10,
       status: 1,
     };
-
-    //合并配置
     let option: Option & GetOption= {
       ...basicOption,
       ...query,
@@ -46,8 +44,7 @@ class CardArray {
       src: "",
       describe: "暂无描述",
       count: 0,
-      inuse: 0,
-      pos: (await CardArrayService.getLength()) + 1,
+      inuse: false,
     };
     //将BasicArray中的数据替换为body中的相应数据
     let option = { ...BasicArray, ...body };

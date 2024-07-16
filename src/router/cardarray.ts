@@ -11,4 +11,4 @@ CardArrayRouter.post('/cardarray/modify',CardArrayController.modifyarray)//修�
 CardArrayRouter.post('/cardarray/upload',CardArrayController.upload)//上传牌阵图片
 CardArrayRouter.get('/cardarray/del',CardArrayController.del)//删除牌阵
 CardArrayRouter.get('/cardarray/delImage',CardArrayController.delImage)//删除牌阵资源
-CardArrayRouter.get('/cardarray/updateSelect',CardArrayController.updateSelect)//牌阵更新排序
+// CardArrayRouter.get('/cardarray/updateSelect',CardArrayController.updateSelect)//牌阵更新排序
