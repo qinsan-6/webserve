@@ -34,3 +34,13 @@ export type ModifyOption ={
     inuse?:number,
     pos?:number,
 }
+
+export interface ModifyMajor{
+    id:string;
+    name?:string;
+    content?:string;
+    question?:{
+        type:'add' | 'delete',
+        value:string,
+    }
+}

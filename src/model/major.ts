@@ -4,6 +4,10 @@ sequelize.sync();
 class Majors extends Model {
   declare id: number;
   declare name: string;
+  declare content:string;
+  declare question:string;
+  declare updatedAt:string;
+  declare createdAt: string;
 }
 
 Majors.init(
@@ -18,6 +22,18 @@ Majors.init(
       autoIncrement: false,
       primaryKey: false,
       allowNull: false,
+    },
+    content: {
+      type: DataTypes.TEXT,
+      autoIncrement: false,
+      primaryKey: false,
+      allowNull: true,
+    },
+    question: {
+      type: DataTypes.TEXT,
+      autoIncrement: false,
+      primaryKey: false,
+      allowNull: true,
     },
   },
   {

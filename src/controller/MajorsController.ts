@@ -1,6 +1,7 @@
 import { Context } from "koa";
 import { MajorService } from "../services/index";
 import { Msg } from "../class";
+import { ModifyMajor } from "../types";
 class MajorsController {
   async add(ctx: Context) {
     //获取大类名
@@ -38,12 +39,12 @@ class MajorsController {
   }
 
   async modify(ctx: Context) {
-    let { id, name } = ctx.request.body;
+    let reqBody:ModifyMajor = ctx.request.body;
     const msg = new Msg();
-    if (!id || !name) {
+    if (!reqBody.id) {
       return ctx.body = msg.setCode(204).setMsg("参数不能为空");
     }
-    let result = await MajorService.modifyMajor(name, id);
+    let result = await MajorService.modifyMajor(reqBody);
     msg.setByRestult(
       result,
       {
