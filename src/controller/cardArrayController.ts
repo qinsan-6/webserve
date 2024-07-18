@@ -38,6 +38,9 @@ class CardArray {
     let msg = new Msg();
     //获取传入牌阵信息
     let body: ArrayInterface = ctx.request.body;
+    if(!body.module||!body.pos){
+      ctx.body = msg.setCode(202).setMsg('参数不能为空')
+    }
     let BasicArray: ArrayOption = {
       id: randomUUID(),
       name: "暂无",

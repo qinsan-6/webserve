@@ -57,6 +57,7 @@ export class CardArray {
     } catch (error) {
       console.error(data);
     } finally {
+      console.log()
       return data;
     }
   }

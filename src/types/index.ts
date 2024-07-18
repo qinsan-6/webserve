@@ -33,6 +33,7 @@ export type ModifyOption ={
     describe?:string,
     inuse?:number,
     pos?:number,
+    layout?:number,
 }
 
 export interface ModifyMajor{

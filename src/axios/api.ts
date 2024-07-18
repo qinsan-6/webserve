@@ -9,7 +9,7 @@ export function askai(question: string, model: string) {
           }).then(res=>{
             resolve(res.data.output.text)
           },err=>{
-            reject(null)
+            reject(err)
           })
     })
   

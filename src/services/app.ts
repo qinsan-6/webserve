@@ -2,6 +2,7 @@
 import CardsModel from "../model/cards";
 import { getRandomInt } from "../until/Math";
 import AppModule from "../model/app"
+import { baseUrl } from "../config/config";
 export class App {
   async random(num: number) {
     let data: Array<CardsModel> = [];
@@ -13,7 +14,9 @@ export class App {
     }
 
     for (let i = 0; i < num; i++) {
-      data.push(cards[getRandomInt(0, cards.length - 1)]);
+      let card = cards[getRandomInt(0, cards.length - 1)]
+      card.src = card.src.replace('http://192.168.0.237:5001',baseUrl)
+      data.push(card);
     }
     return data;
   }

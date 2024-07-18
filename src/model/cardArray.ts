@@ -13,6 +13,7 @@ class CardArray extends Model {
     declare inuse: boolean;
     declare pos:number;
     declare module: string;
+    declare layout:number;
 }
 
 CardArray.init({
@@ -48,6 +49,10 @@ CardArray.init({
     module: {
         type: DataTypes.UUID,
         allowNull: false
+    },
+    layout: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 },{
     sequelize,

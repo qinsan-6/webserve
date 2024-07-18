@@ -5,6 +5,7 @@ class Cards extends Model {
     declare id:string;
     declare notes:string;
     declare content:string;
+    declare src:string;
 }
 
 Cards.init({

@@ -52,6 +52,7 @@ export class Ai {
           let res = await askai(item, aimodel)
 
           if(res == null){
+            console.log(res)
             //ai回答异常
             result = null;
             break 
