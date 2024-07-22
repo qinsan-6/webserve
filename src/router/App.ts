@@ -9,3 +9,4 @@ AppRouter.get('/app/randomone',AppController.randomOne)//随机获取一张塔�
 AppRouter.post('/app/upload',AppController.upload)//上传小程序资源
 AppRouter.post('/app/createOne',AppController.createOne)//创建小程序资源
 AppRouter.get('/app/findAll',AppController.getAll)//查询全部资源
+AppRouter.get('/app/getlayoutinfo',AppController.getlayout)//获取牌阵布局组件信息

@@ -1,5 +1,6 @@
 // import AppModel from "../model/app";
 import CardsModel from "../model/cards";
+import LayoutModel from "../model/layout";
 import { getRandomInt } from "../until/Math";
 import AppModule from "../model/app"
 import { baseUrl } from "../config/config";
@@ -56,5 +57,14 @@ export class App {
   async getAll(){
     let app = await AppModule.findAll()
     return app
+  }
+
+  async getlayout(serial:number){
+    let layout = await LayoutModel.findOne({
+      where:{
+        serial
+      }
+    })
+    return layout
   }
 }

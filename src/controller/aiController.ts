@@ -1,16 +1,7 @@
 import { Context } from "Koa";
 import { AiService } from "../services/index";
+import { Msg } from "../class";
 
-class Msg {
-  constructor() {
-    this.code = 202;
-    this.msg = "something err";
-    this.data = null;
-  }
-  code: 200 | 202 | 404 | 204;
-  msg: string;
-  data: any;
-}
 class AiController {
   changemodel(){}
   async inquire(ctx:Context){
@@ -51,13 +42,58 @@ class AiController {
         ctx.body = msg;
         return;
     }
-    // 调用AI模型检查玩法是否有��反常识
+    if(!status){
+      status = 1;
+    }
     // 调用Serve层方法添加玩法
     let data = await AiService.addPlay(name,template,status);
     if(data){
         msg.code = 200;
         msg.data = data;
         msg.msg = "添加成功";
+    }
+    ctx.body = msg;
+  }
+  
+  async get(ctx: Context){
+    let msg = new Msg();
+    let data = await AiService.getPlay();
+    msg.setByRestult(data, {
+      code: 200,
+      msg: "查询成功",
+    });
+    ctx.body = msg;
+  }
+
+  async modify(ctx: Context){
+    let msg = new Msg();
+    let id = ctx.request.query.id as any as number;
+    let body = ctx.request.body
+    if(!id){
+      msg.setCode(204).setMsg("参数不能为空");
+      ctx.body = msg;
+      return;
+    }
+
+    let data = await AiService.modifyPlay(id,body);
+    msg.setByRestult(data,{
+      code: 200,
+      msg: "修改成功"
+    })
+    ctx.body = msg;
+  }
+
+  async delete(ctx: Context){
+    let id = ctx.request.query.id as any as number
+    let msg = new Msg();
+    if(!id){
+      msg.setCode(204).setMsg("参数不能为空");
+      ctx.body = msg;
+      return;
+    }
+    let data =await AiService.deletePlay(id);
+    if(data > 0){
+      msg.setCode(200).setMsg('删除成功').setData(data);
     }
     ctx.body = msg;
   }

@@ -5,6 +5,7 @@ sequelize.sync();
 class Layout extends Model {
   declare name: string;
   declare serial: number;
+  declare cardnum: number;
   declare updatedAt:string;
   declare createdAt: string;
 }
@@ -22,6 +23,12 @@ Layout.init(
       primaryKey: true,
       allowNull: false,
     },
+    cardnum: {
+      type: DataTypes.INTEGER,
+      autoIncrement: false,
+      primaryKey: false,
+      allowNull: false,
+    }
   },
   {
     // 这是其他模型参数

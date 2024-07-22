@@ -71,4 +71,44 @@ export class Ai {
       return result;
     }
   }
+
+  async getPlay(){
+    let plays = await PlayModule.findAll();
+    plays.forEach(play =>{
+      play.template = JSON.parse(play.template);
+    })
+    return plays;
+  }
+
+  async modifyPlay(id:number,data:{
+    template?:string;
+    status?:number;
+  }){
+    let play = await PlayModule.findOne({
+      where:{
+        id
+      }
+    })
+    if(play){
+      if(data.template){
+        let template = JSON.parse(play.template);
+        template[0] = data.template;
+        play.template = JSON.stringify(template);
+      }
+      if(data.status){
+        play.status = data.status;
+      }
+      play.save()
+      return play
+    }
+    return null;
+  }
+
+  deletePlay(id:number){
+    return PlayModule.destroy({
+      where:{
+        id
+      }
+    })
+  }
 }
