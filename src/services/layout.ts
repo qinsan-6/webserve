@@ -4,10 +4,13 @@ export class Layout{
     async getlayouts(){
         return await LayoutModel.findAll()
     }
-    async addlayout(name:string){
+    async addlayout(name:string,cardnum:number){
         try {
+            let layouts = await LayoutModel.findAll()
             await LayoutModel.create({
-                name
+                name,
+                cardnum,
+                serial: layouts.length 
             })
         } catch (error) {
             console.error(error)

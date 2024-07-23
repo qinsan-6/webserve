@@ -20,7 +20,7 @@ Layout.init(
     },
     serial: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
+      autoIncrement: false,
       primaryKey: true,
       allowNull: false,
     },
