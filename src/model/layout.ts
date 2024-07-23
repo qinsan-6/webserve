@@ -6,6 +6,7 @@ class Layout extends Model {
   declare name: string;
   declare serial: number;
   declare cardnum: number;
+  declare play:number;
   declare updatedAt:string;
   declare createdAt: string;
 }
@@ -28,6 +29,11 @@ Layout.init(
       autoIncrement: false,
       primaryKey: false,
       allowNull: false,
+    },
+    play: {
+      type: DataTypes.INTEGER,
+      primaryKey: false,
+      allowNull: true,
     }
   },
   {
