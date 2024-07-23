@@ -1,5 +1,6 @@
 import PlayModule from "../model/play";
 import { askai } from "../axios/api";
+import { AILogger } from "../logger";
 import { FreeModelName } from "../config/config"
 export class Ai {
   async addPlay(name: string, template: Array<string>,status:number) {
@@ -46,17 +47,18 @@ export class Ai {
 
           //将模板中的问题替换成用户问题
           item = item.replace("$?", question);
-          console.log("template", item);
+          AILogger.info('用户提问为'+ item);
 
           // 向ai发送请求
           let res = await askai(item, aimodel)
 
           if(res == null){
-            console.log(res)
+            AILogger.error('ai回复异常'+ res);
             //ai回答异常
             result = null;
             break 
           }else {
+            AILogger.info('ai回复为'+ res);
             result += res;
           }
           

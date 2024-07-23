@@ -14,12 +14,14 @@ const config ={
             "access": { "type": "file","filename":'logs/access.log' },
             "db": { "type": "file","filename":'logs/db.log' },
             "readfile": { "type": "file","filename":'logs/readfile.log' },
-            "consoleout": { "type": "console" }
+            "consoleout": { "type": "console" },
+            "AI": { "type": "file","filename":'logs/ai.log' },
           },
           "categories": {
             "access": { "appenders": [ "access" ], "level": "info" },
             "db": { "appenders": [ "db" ], "level": "info" },
             "readfile": { "appenders": [ "readfile" ], "level": "info" },
+            "AI": { "appenders": [ "AI" ], "level": "info" },
             "default": { "appenders": [ "consoleout" ], "level": "info" },
           }
     },

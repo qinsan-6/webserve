@@ -1,0 +1,9 @@
+[2024-07-23T17:55:56.545] [INFO] access - path:/majors/get
+[2024-07-23T17:55:56.550] [INFO] access - path:/layout/get
+[2024-07-23T17:55:56.556] [INFO] access - path:/ai/get
+[2024-07-23T17:55:58.563] [INFO] access - path:/cardarray/get
+[2024-07-23T17:56:11.404] [INFO] access - path:/app/getlayoutinfo
+[2024-07-23T17:56:12.760] [INFO] access - path:/app/randomone
+[2024-07-23T17:56:14.407] [INFO] access - path:/app/randomone
+[2024-07-23T17:56:16.088] [INFO] access - path:/app/randomone
+[2024-07-23T17:56:16.931] [INFO] access - path:/ai
