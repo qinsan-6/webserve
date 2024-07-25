@@ -20,13 +20,13 @@ class layoutController {
   }
   async add(ctx: Context) {
     let msg = new Msg();
-    let { name, cardnum } = ctx.request.body;
-    if (!name || !cardnum) {
+    let { name } = ctx.request.body;
+    if (!name) {
       msg.setCode(204).setMsg("参数不能为空");
       ctx.body = msg;
       return;
     }
-    let result = await LayoutService.addlayout(name,cardnum);
+    let result = await LayoutService.addlayout(name);
     msg.setByRestult(result, {
       code: 200,
       msg: "添加成功",

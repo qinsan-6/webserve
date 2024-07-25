@@ -78,13 +78,13 @@ class AppController {
 
   async getlayout(ctx: Context){
     let msg = new Msg()
-    let serial = ctx.request.query.serial
-    if(!serial){
+    let id = ctx.request.query.id
+    if(!id){
       msg.code = 204
       msg.msg = '参数不能为空'
       return ctx.body = msg
     }
-    const data = await AppService.getlayout(serial as any)
+    const data = await AppService.getlayout(id as string)
     msg.setByRestult(data,{
       code: 200,
       msg: "查询成功",

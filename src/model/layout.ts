@@ -4,11 +4,11 @@ sequelize.sync();
 
 class Layout extends Model {
   declare name: string;
-  declare serial: number;
-  declare cardnum: number;
+  declare card:string;
   declare play:number;
   declare updatedAt:string;
   declare createdAt: string;
+  declare id:string;
 }
 
 Layout.init(
@@ -18,17 +18,17 @@ Layout.init(
       primaryKey: false,
       allowNull: false,
     },
-    serial: {
-      type: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.UUID,
       autoIncrement: false,
       primaryKey: true,
       allowNull: false,
     },
-    cardnum: {
-      type: DataTypes.INTEGER,
+    card: {
+      type: DataTypes.STRING,
       autoIncrement: false,
       primaryKey: false,
-      allowNull: false,
+      allowNull: true,
     },
     play: {
       type: DataTypes.INTEGER,

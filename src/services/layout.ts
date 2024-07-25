@@ -1,15 +1,25 @@
+import { baseUrl } from '../config/config'
 import LayoutModel from '../model/layout'
+import { LayoutCard, LayoutInfo } from '../types'
 
 export class Layout{
     async getlayouts(){
-        return await LayoutModel.findAll()
+        let layouts =  await LayoutModel.findAll()
+        layouts.forEach(lay =>{
+            lay.dataValues.card  = JSON.parse(lay.dataValues.card) 
+            console.log(lay.dataValues.card)
+            for (let i = 0; i < lay.dataValues.card.length; i++){
+                lay.dataValues.card[i].presrc = baseUrl +  lay.dataValues.card[i].presrc
+            }
+            
+        })
+        return layouts
     }
-    async addlayout(name:string,cardnum:number){
+    async addlayout(name:string){
         try {
             let layouts = await LayoutModel.findAll()
             await LayoutModel.create({
                 name,
-                cardnum,
                 serial: layouts.length 
             })
         } catch (error) {

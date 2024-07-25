@@ -59,12 +59,15 @@ export class App {
     return app
   }
 
-  async getlayout(serial:number){
+  async getlayout(id:string){
     let layout = await LayoutModel.findOne({
       where:{
-        serial
+        id
       }
     })
+    if(layout){
+      layout.dataValues.card = JSON.parse(layout.dataValues.card)
+    }
     return layout
   }
 }
