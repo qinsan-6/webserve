@@ -8,3 +8,5 @@ LayoutsRouter.get('/layout/get',layoutsController.get) //获取布局组件信�
 LayoutsRouter.get('/layout/delete',layoutsController.delete) //删除布局组件
 LayoutsRouter.post('/layout/add',layoutsController.add) //添加布局组件
 LayoutsRouter.post('/layout/modify',layoutsController.modify) //修改布局组件
+LayoutsRouter.post('/layout/addcard',layoutsController.addcard) //添加卡牌
+LayoutsRouter.post('/layout/updatecard',layoutsController.updatecard) //添加卡牌
