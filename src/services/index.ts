@@ -4,9 +4,11 @@ import { Ai } from './ai'
 import { CardArray } from './cardarray'
 import { Major } from './major'
 import { Layout } from './layout'
+import { User } from './user'
 export const CardsService = new Cards();
 export const AppService = new App();
 export const AiService = new Ai();
 export const CardArrayService = new CardArray();
 export const MajorService = new Major();
 export const LayoutService = new Layout();
+export const UserService = new User();

@@ -29,6 +29,7 @@ const config ={
         tokenkey:'choumugua',
         pageendflag:process.env.PAGEENDFLAG,
         enterflag:process.env.ENTERFLAG,
+        hashSalt:10
     }
 }
 

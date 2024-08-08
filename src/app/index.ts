@@ -6,7 +6,7 @@ import serve from"koa-static";
 import path from "path";
 import cors from 'koa2-cors'
 // 路由导入
-import {CardsRouter,AppRouter,aiRouter,CardArrayRouter,MajorsRouter,LayoutsRouter} from '../router'
+import {CardsRouter,AppRouter,aiRouter,CardArrayRouter,MajorsRouter,LayoutsRouter,UserRouter} from '../router'
 import {Server} from'http'
 import accessLogMiddleware from'../middleware/AccessLogMiddleware'
 
@@ -29,6 +29,7 @@ app
     .use(CardArrayRouter.routes())
     .use(MajorsRouter.routes())
     .use(LayoutsRouter.routes())
+    .use(UserRouter.routes())
 export const run=(port:any):Server=>{
     return app.listen(port);
 }
